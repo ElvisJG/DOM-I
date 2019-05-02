@@ -64,5 +64,13 @@ btn.textContent = siteContent['cta']['button'];
 let midImg = document.getElementById('middle-img');
 midImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
 
+let mainContentH4s = document.querySelectorAll('h4');
+let filterMainContentH4s = Object.keys(siteContent['main-content']).filter((key) => key.includes('h4'));
+ mainContentH4s.forEach((index, i) => mainContentH4s[i].textContent = siteContent['main-content'][`${filterMainContentH4s[i]}`]);
+
+ let mainContentPs = document.querySelectorAll('p');
+ let filterMainContentPs = Object.keys(siteContent['main-content']).filter((key) => key.includes('content'));
+ mainContentPs.forEach((index, i) => mainContentPs[i].textContent = siteContent['main-content'][`${filterMainContentPs[i]}`]);
+
 let footer = document.querySelector('footer');
 footer.getElementsByTagName('p') = siteContent['footer']['copyright'];
