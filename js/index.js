@@ -53,7 +53,7 @@ nav('nav a').forEach((a, i) => {
 });
 
 // Had to make a selector to select the nav element, the above selects the entire document then goes down and looks for nav a, so it wasn't usable for this
-let navItself = document.querySelector('nav')
+let navItself = document.querySelector('nav');
 
 let prependNav = document.createElement('a');
 prependNav.href = '#';
@@ -68,7 +68,7 @@ navItself.append(appendNav);
 // All nav items are now green, moved it down so it works on the prepended and appended navs
 nav('nav a').forEach(green => {
   green.style.color = 'green';
-})
+});
 
 // Assigned siteContent cta's h1 content to ctaHeader
 let ctaHeader = document.querySelector('h1');
@@ -90,12 +90,24 @@ midImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
 // Then did a foreach on maincontenth4s to add the content found in the filter, under 'main-content'
 // Repeated these same steps to populate p tags
 let mainContentH4s = document.querySelectorAll('h4');
-let filterMainContentH4s = Object.keys(siteContent['main-content']).filter((key) => key.includes('h4'));
- mainContentH4s.forEach((index, i) => mainContentH4s[i].textContent = siteContent['main-content'][`${filterMainContentH4s[i]}`]);
+let filterMainContentH4s = Object.keys(siteContent['main-content']).filter(
+  key => key.includes('h4')
+);
+mainContentH4s.forEach(
+  (index, i) =>
+    (mainContentH4s[i].textContent =
+      siteContent['main-content'][`${filterMainContentH4s[i]}`])
+);
 
- let mainContentPs = document.querySelectorAll('p');
- let filterMainContentPs = Object.keys(siteContent['main-content']).filter((key) => key.includes('content'));
- mainContentPs.forEach((index, i) => mainContentPs[i].textContent = siteContent['main-content'][`${filterMainContentPs[i]}`]);
+let mainContentPs = document.querySelectorAll('p');
+let filterMainContentPs = Object.keys(siteContent['main-content']).filter(key =>
+  key.includes('content')
+);
+mainContentPs.forEach(
+  (index, i) =>
+    (mainContentPs[i].textContent =
+      siteContent['main-content'][`${filterMainContentPs[i]}`])
+);
 
-let footer = document.getElementsByTagName('footer');
-footer.getElementsByTagName('p') = siteContent['footer']['copyright'];
+let footer = document.querySelector('footer');
+footer.textContent = siteContent['footer']['copyright'];
