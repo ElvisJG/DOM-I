@@ -53,18 +53,16 @@ nav('nav a').forEach((a, i) => {
 });
 
 let ctaHeader = document.querySelector('h1');
-ctaHeader.textContent = 'DOM IS AWESOME';
+ctaHeader.textContent = siteContent['cta']['h1'];
 
 let ctaImg = document.getElementById('cta-img');
 ctaImg.setAttribute('src', siteContent['cta']['img-src']);
 
-let btn = document.getElementsByTagName('button');
-btn.textContent = 'Get Started';
-
-let h4s = document.querySelectorAll.bind(document);
-h4s('main-content, h4').forEach((h4, i) => {
-  h4.textContent = siteContent.h4;
-});
+let btn = document.querySelector('button');
+btn.textContent = siteContent['cta']['button'];
 
 let midImg = document.getElementById('middle-img');
 midImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
+
+let footer = document.querySelector('footer');
+footer.getElementsByTagName('p') = siteContent['footer']['copyright'];
