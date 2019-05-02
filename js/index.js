@@ -109,5 +109,16 @@ mainContentPs.forEach(
       siteContent['main-content'][`${filterMainContentPs[i]}`])
 );
 
+// Selected the contact h4 and Ps
+let contacth4 = document.querySelector('.contact h4');
+let contactP = document.querySelectorAll('.contact p');
+
+// Assigned the h4 the siteContent array contact-h4 content, used indexes to hardcode (rip) P tag content
+contacth4.textContent = siteContent['contact']['contact-h4'];
+contactP[0].textContent = siteContent['contact']['address'];
+contactP[1].textContent = siteContent['contact']['phone'];
+contactP[2].textContent = siteContent['contact']['email'];
+
+// Footer.
 let footer = document.querySelector('footer');
 footer.textContent = siteContent['footer']['copyright'];
