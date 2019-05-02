@@ -46,24 +46,49 @@ const siteContent = {
 let logo = document.getElementById('logo-img');
 logo.setAttribute('src', siteContent['nav']['img-src']);
 
+// Selects the entire document, then selects the nav then a within nav. Iterates through each a tag and does nav-item-(0 + 1 -> 6)
 let nav = document.querySelectorAll.bind(document);
-
 nav('nav a').forEach((a, i) => {
   a.textContent = siteContent.nav[`nav-item-${i + 1}`];
 });
 
+// Had to make a selector to select the nav element, the above selects the entire document then goes down and looks for nav a, so it wasn't usable for this
+let navItself = document.querySelector('nav')
+
+let prependNav = document.createElement('a');
+prependNav.href = '#';
+prependNav.textContent = 'Green';
+navItself.prepend(prependNav);
+
+let appendNav = document.createElement('a');
+appendNav.href = '#';
+appendNav.textContent = 'Yikes';
+navItself.append(appendNav);
+
+// All nav items are now green, moved it down so it works on the prepended and appended navs
+nav('nav a').forEach(green => {
+  green.style.color = 'green';
+})
+
+// Assigned siteContent cta's h1 content to ctaHeader
 let ctaHeader = document.querySelector('h1');
 ctaHeader.textContent = siteContent['cta']['h1'];
 
+// Use the code from logo-img to call cta's img
 let ctaImg = document.getElementById('cta-img');
 ctaImg.setAttribute('src', siteContent['cta']['img-src']);
 
+// Assigned siteContent cta's button content to button
 let btn = document.querySelector('button');
 btn.textContent = siteContent['cta']['button'];
 
+// Use the code from logo-img to call middle-img
 let midImg = document.getElementById('middle-img');
 midImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
 
+// selected all h4's in the document, ran a .filter using Object.keys on siteContent's main content searching for any 'key' that included h4
+// Then did a foreach on maincontenth4s to add the content found in the filter, under 'main-content'
+// Repeated these same steps to populate p tags
 let mainContentH4s = document.querySelectorAll('h4');
 let filterMainContentH4s = Object.keys(siteContent['main-content']).filter((key) => key.includes('h4'));
  mainContentH4s.forEach((index, i) => mainContentH4s[i].textContent = siteContent['main-content'][`${filterMainContentH4s[i]}`]);
@@ -72,5 +97,5 @@ let filterMainContentH4s = Object.keys(siteContent['main-content']).filter((key)
  let filterMainContentPs = Object.keys(siteContent['main-content']).filter((key) => key.includes('content'));
  mainContentPs.forEach((index, i) => mainContentPs[i].textContent = siteContent['main-content'][`${filterMainContentPs[i]}`]);
 
-let footer = document.querySelector('footer');
+let footer = document.getElementsByTagName('footer');
 footer.getElementsByTagName('p') = siteContent['footer']['copyright'];
